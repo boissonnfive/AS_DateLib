@@ -18,6 +18,7 @@ Nombreuses fonctions de traitement des dates.
 - __premierJourDeLAnnee__ : Renvoi la date du premier jour de l'année spécifiée.
 - __nombreDeJoursEn__ : Renvoi le nombre de jours dans l'année spécifiée.
 - __anneeBissextile__ : Dit si l'année en paramètre est bissextile ou pas.
+- __initialiseTemps__ : Initialise l'heure de la date à 00h00 et 0 secondes.
 
 
 ## Installer

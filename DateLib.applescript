@@ -127,6 +127,20 @@ on anneeBissextile(annee)
 end anneeBissextile
 
 
+(*
+Nom				: initialiseTemps 
+Description		: Initialise l'heure de la date à 00h00 et 0 secondes.
+maDat 	       	: (date) date dont on veut initialiser l'heure.
+retour			: (date) La même date mais à 00h00 et 0 secondes.
+Remarque		: Utile quand on veut ajouter une heure précise à une date
+Exemple			: set maDate to (current date)
+				  set maDateA0Heure to initialiseTemps(maDate)
+				  set maDateRDV to maDateA0Heure + 9 * hours + 30 * minutes 
+*)
+on initialiseTemps(maDate)
+	tell maDate to set maDateAMinuit to it - (its time)
+	return maDateAMinuit
+end initialiseTemps
 
 -----------------------------------------------------------------------------------------------------------
 --                                                     TESTS
@@ -160,12 +174,14 @@ tell script "Date Lib"
 	
 	set trace to ""
 	set trace to trace & "Aujourd'hui : " & date string of (current date)
+	set trace to trace & return & "Heure : " & time string of (current date)
 	set trace to trace & return & "Numéro de semaine : " & numeroDeSemaine(current date)
 	set trace to trace & return & "Hier : " & date string of (hier())
 	set trace to trace & return & "Demain : " & date string of (demain())
 	set trace to trace & return & "Premier jour de l'année : " & date string of (premierJourDeLAnnee(year of (current date)))
 	set trace to trace & return & ("Nombre de jours en " & (year of (current date)) as text) & " : " & nombreDeJoursEn(year of (current date))
 	set trace to trace & return & "Année bissextile ? (" & (year of (current date) as text) & ") : " & anneeBissextile(year of (current date))
+	set trace to trace & return & "Ma date à 00h00 : " & initialiseTemps((current date))
 	
 	
 	display alert trace
