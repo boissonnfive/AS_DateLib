@@ -130,7 +130,7 @@ end anneeBissextile
 (*
 Nom				: initialiseTemps 
 Description		: Initialise l'heure de la date à 00h00 et 0 secondes.
-maDat 	       	: (date) date dont on veut initialiser l'heure.
+maDate 	       	: (date) date dont on veut initialiser l'heure.
 retour			: (date) La même date mais à 00h00 et 0 secondes.
 Remarque		: Utile quand on veut ajouter une heure précise à une date
 Exemple			: set maDate to (current date)
@@ -141,6 +141,33 @@ on initialiseTemps(maDate)
 	tell maDate to set maDateAMinuit to it - (its time)
 	return maDateAMinuit
 end initialiseTemps
+
+
+
+(*
+Nom				: jourEnFrancais 
+Description		: Renvoi le nom du jour de la semaine en français.
+maDate 	       	: (date) date dont on veut le jour de la semaine.
+retour			: (text) Le nom du jour de la semaine.
+Remarque		: Par défaut, AppleScript renvoi le nom du jour en anglais.
+*)
+on jourEnFrancais(maDate)
+	set chaineDate to maDate as string
+	get 1st word of chaineDate
+end jourEnFrancais
+
+
+(*
+Nom				: moisEnFrancais 
+Description		: Renvoi le nom du mois en français.
+maDate 	       	: (date) date dont on veut le mois en français.
+retour			: (text) Le nom du mois.
+Remarque		: Par défaut, AppleScript renvoi le nom du mois en anglais.
+*)
+on moisEnFrancais(maDate)
+	set chaineDate to maDate as string
+	get 3rd word of chaineDate
+end moisEnFrancais
 
 -----------------------------------------------------------------------------------------------------------
 --                                                     TESTS
@@ -175,6 +202,8 @@ tell script "Date Lib"
 	set trace to ""
 	set trace to trace & "Aujourd'hui : " & date string of (current date)
 	set trace to trace & return & "Heure : " & time string of (current date)
+	set trace to trace & return & "Nom du jour : " & jourEnFrancais(current date)
+	set trace to trace & return & "Nom du mois : " & moisEnFrancais(current date)
 	set trace to trace & return & "Numéro de semaine : " & numeroDeSemaine(current date)
 	set trace to trace & return & "Hier : " & date string of (hier())
 	set trace to trace & return & "Demain : " & date string of (demain())

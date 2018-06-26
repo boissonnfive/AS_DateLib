@@ -19,6 +19,8 @@ Nombreuses fonctions de traitement des dates.
 - __nombreDeJoursEn__ : Renvoi le nombre de jours dans l'année spécifiée.
 - __anneeBissextile__ : Dit si l'année en paramètre est bissextile ou pas.
 - __initialiseTemps__ : Initialise l'heure de la date à 00h00 et 0 secondes.
+- __jourEnFrancais__ : Renvoi le nom du jour de la semaine en français.
+- __moisEnFrancais__ : Renvoi le nom du mois en français.
 
 
 ## Installer
